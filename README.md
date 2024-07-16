@@ -1,2 +1,1 @@
-# API-com-FastAPI-Python-e-Docker.
-Desafio DIO: Desenvolvendo sua Primeira API com FastAPI, Python e Docker.
+Repositório referente ao desafio do bootcamp Python AI Backend Developer DIO.
