@@ -13,10 +13,10 @@ def create_atleta(db: Session, atleta: schemas.AtletaCreate):
     db.refresh(db_atleta)
     return db_atleta
 
-def get_atletas(db: Session, nome: Optional[str] = None, cpf: Optional[str] = None):
+def get_atletas(db: Session, skip: int = 0, limit: int = 10, nome: Optional[str] = None, cpf: Optional[str] = None):
     query = db.query(models.Atleta)
     if nome:
         query = query.filter(models.Atleta.nome.ilike(f"%{nome}%"))
     if cpf:
         query = query.filter(models.Atleta.cpf == cpf)
-    return query.all()
+    return query.offset(skip).limit(limit).all()
