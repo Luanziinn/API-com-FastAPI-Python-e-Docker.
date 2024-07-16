@@ -17,7 +17,7 @@ def create_atleta(atleta: schemas.AtletaCreate, db: Session = Depends(database.g
         raise HTTPException(status_code=303, detail="Já existe um atleta cadastrado com o cpf: {}".format(atleta.cpf))
     return crud.create_atleta(db=db, atleta=atleta)
 
-@router.get("/", response_model=List[schemas.Atleta])
+@router.get("/", response_model=List[schemas.AtletaResponse])
 def read_atletas(skip: int = 0, limit: int = 10, nome: Optional[str] = None, cpf: Optional[str] = None, db: Session = Depends(database.get_db)):
     atletas = crud.get_atletas(db, skip=skip, limit=limit, nome=nome, cpf=cpf)
     return atletas
